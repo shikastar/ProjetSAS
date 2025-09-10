@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-
+#define MAX_SIZE 1000
 typedef struct Date
 {
     int     day;
@@ -14,10 +14,10 @@ typedef struct Date
 typedef struct Player
 {
     int     id;
-    char    *nom;
-    char    *prenom;
+    char    *firstName;
+    char    *secondName;
     int     tshirtNumber;
-    int     position;
+    char    *position;
     int     age;
     int     goalsScored;
     Date    inscriptionDate;
@@ -30,3 +30,8 @@ typedef struct TeamPlayers
     Player player;
     struct TeamPlayers *next;
 }               TeamPlayers;
+
+
+void    addNewPlayers(TeamPlayers *team);
+char    *readLine(void);
+void    printErrorAndExit(const char *error);
