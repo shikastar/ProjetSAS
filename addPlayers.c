@@ -94,7 +94,7 @@ void    addNewPlayer(TeamPlayers **team, Player player)
 }
 
 
-void    addNewPlayers(TeamPlayers *team)
+void    addNewPlayers(TeamPlayers **team)
 {
     printf("Please enter number of new players that you want to add :");
     int numOfNewPlayers;
@@ -104,6 +104,6 @@ void    addNewPlayers(TeamPlayers *team)
     {
         printf("    Please Enter player number %d data.\n", i + 1);
         Player player = createNewPlayer();
-        addNewPlayer(&team, player);
+        addNewPlayer(team, player);
     }
 }

@@ -3,7 +3,9 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define MAX_SIZE 1000
+#define SORT_BY_AGE  0
+#define SORT_BY_NAME 1
+
 typedef struct Date
 {
     int     day;
@@ -32,6 +34,8 @@ typedef struct TeamPlayers
 }               TeamPlayers;
 
 
-void    addNewPlayers(TeamPlayers *team);
+void    addNewPlayers(TeamPlayers **team);
 char    *readLine(void);
 void    printErrorAndExit(const char *error);
+void    displayPlayersInfo(TeamPlayers *team);
+void    displayTeamPlayers(TeamPlayers *team);

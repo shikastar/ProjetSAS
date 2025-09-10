@@ -12,9 +12,8 @@ char    *readLine(void)
     size_t len = 0;
     char *line = NULL;
     size_t read = getline(&line, &len, stdin);
-    // getchar();
     if (read < 0)
         printErrorAndExit("Error in reading line.\n");
-    
+    line[strlen(line) - 1] = '\0';
     return line;
 }
