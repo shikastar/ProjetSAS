@@ -6,6 +6,9 @@ void    displayMenu()
     printf("    1- Add new Players.\n");
     printf("    2- Display team players.\n");
     printf("    3- Edit player info.\n");
+    printf("    4- Delete a player.\n");
+    printf("    5- Search for a player.\n");
+    printf("    6- Display team Statistics.\n");
     printf("==========================================================================\n");
     printf("Select an option from the menu please: \n");
 }
@@ -29,6 +32,9 @@ void    checkUserChoice(int userChoice, TeamPlayers **team)
             break;
         case 5:
             seachForAplayer(*team);
+            break;
+        case 6:
+            displayTeamStatistics(*team);
             break;
         default:
             printf("Invalid choice, Please select a choice from the menu.");
