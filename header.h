@@ -42,3 +42,4 @@ void    printErrorAndExit(const char *error);
 void    displayPlayersInfo(TeamPlayers *team);
 void    displayTeamPlayers(TeamPlayers *team);
 int     readInt(void);
+void    editPlayerInfo(TeamPlayers *team);
