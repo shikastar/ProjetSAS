@@ -29,6 +29,60 @@ void    displayPlayersAverageAge(TeamPlayers *team)
     printf("Average age of players in the team is : %.2f\n", average);
 }
 
+void    displayBestScorerPlayer(TeamPlayers *team)
+{
+    if (team == NULL) {
+        printf("There is no players in the team.\n");
+        return ;
+    }
+    Player bestScorer = team->player;
+
+    while (team)
+    {
+        if (team->player.goalsScored > bestScorer.goalsScored)
+            bestScorer = team->player;
+        team = team->next;
+    }
+
+    printf("The best goals scorer in the team is %s %s, he scored %d goals.\n",
+        bestScorer.firstName, bestScorer.secondName, bestScorer.goalsScored);
+}
+
+void    displayYoungestandOlderPlayer(TeamPlayers *team)
+{
+    if (team == NULL) {
+        printf("There is no players in the team.\n");
+        return ;
+    }
+    Player youngestPlayer = team->player;
+    Player oldestPlayer = team->player;
+    while (team)
+    {
+        if (team->player.age < youngestPlayer.age) youngestPlayer = team->player;
+        if (team->player.age > oldestPlayer.age) oldestPlayer = team->player;
+        team = team->next;
+    }
+    printf("The youngest player in the team is : %s %s, his age is : %d.\n",
+        youngestPlayer.firstName, youngestPlayer.secondName, youngestPlayer.age);
+    printf("The oldest player in the team is : %s %s, his age is : %d.\n", 
+        oldestPlayer.firstName, oldestPlayer.secondName, oldestPlayer.age);
+}
+
+void    displayPlayersScoringXgoals(TeamPlayers *team)
+{
+    printf("Enter the number X: ");
+    int X = readInt();
+
+    printf("List of players that scored more than %d goals: \n", X);
+    while (team)
+    {
+        if (team->player.goalsScored > X) 
+            printf(" %s %s\n", team->player.firstName, team->player.secondName);
+        
+        team = team->next;
+    }
+}
+
 void    checkStatisticsOption(TeamPlayers *team)
 {
     int option = readInt();
@@ -41,10 +95,13 @@ void    checkStatisticsOption(TeamPlayers *team)
             displayPlayersAverageAge(team);
             break;
         case 3:
+            displayPlayersScoringXgoals(team); 
             break;
         case 4:
+            displayBestScorerPlayer(team);
             break;
         case 5:
+            displayYoungestandOlderPlayer(team); 
             break;
         default:
             printf("Invalid statistics option.\n");
@@ -58,7 +115,7 @@ void    displayStatisticsMenu()
     printf("    1- Display number of players in the team.\n");
     printf("    2- Display average age of players in the team.\n");
     printf("    3- Display number of players that score more that X goals.\n");
-    printf("    4- Displaye the best goalScorer in the team.\n");
+    printf("    4- Display the best goalScorer in the team.\n");
     printf("    5- Display the youngest and the oldest player in the team.");
 }
 

@@ -35,7 +35,7 @@ void    checkUserChoice(int userChoice, TeamPlayers **team)
             break;
         case 6:
             displayTeamStatistics(*team);
-            break;
+            break ;
         default:
             printf("Invalid choice, Please select a choice from the menu.");
     }
