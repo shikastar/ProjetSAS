@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <limits.h>
+#include <ctype.h>
 
 #define SORT_BY_AGE  0
 #define SORT_BY_NAME 1
@@ -39,3 +41,4 @@ char    *readLine(void);
 void    printErrorAndExit(const char *error);
 void    displayPlayersInfo(TeamPlayers *team);
 void    displayTeamPlayers(TeamPlayers *team);
+int     readInt(void);

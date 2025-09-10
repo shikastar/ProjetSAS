@@ -22,7 +22,7 @@ void    readFirstAnsSecondName(Player *player)
 void    readTshirtNumber(Player *player)
 {
     printf("    Enter player tshirt number: ");
-    scanf("%d", &player->tshirtNumber); getchar();
+    player->tshirtNumber = readInt();
 }
 
 void    readPosition(Player *player)
@@ -35,24 +35,24 @@ void    readPosition(Player *player)
 void    readAge(Player *player)
 {
     printf("    Enter player age: ");
-    scanf("%d", &player->age); getchar();
+    player->age = readInt();
 }
 
 void    readGoalsScored(Player *player)
 {
     printf("    Enter player number of goals scored: ");
-    scanf("%d", &player->goalsScored); getchar();
+    player->goalsScored = readInt();
 }
 
 void    readInscriptionDate(Player *player)
 {
     printf("    Enter inscription date:\n");
     printf("         Enter the year of inscription: ");
-    scanf("%d", &player->inscriptionDate.year); getchar();
+    player->inscriptionDate.year = readInt();
     printf("         Enter the month of inscription: ");
-    scanf("%d", &player->inscriptionDate.month); getchar();
-    printf("         Enter the day of inscription: "); getchar();
-    scanf("%d", &player->inscriptionDate.day); getchar();
+    player->inscriptionDate.month = readInt();
+    printf("         Enter the day of inscription: ");
+    player->inscriptionDate.day = readInt();
 }
 
 void    readStatus(Player *player)
@@ -97,8 +97,8 @@ void    addNewPlayer(TeamPlayers **team, Player player)
 void    addNewPlayers(TeamPlayers **team)
 {
     printf("Please enter number of new players that you want to add :");
-    int numOfNewPlayers;
-    scanf("%d", &numOfNewPlayers); getchar();
+    int numOfNewPlayers = readInt();
+    if (numOfNewPlayers )
 
     for (int i = 0; i < numOfNewPlayers; i++)
     {

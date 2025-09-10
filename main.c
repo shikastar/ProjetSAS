@@ -1,6 +1,5 @@
 #include "header.h"
 
-
 void    displayMenu() 
 {
     printf("\n=============================MENU=========================================\n");
@@ -33,9 +32,7 @@ int main(int ac, char **av)
     while (true)
     {
         displayMenu();
-        int userChoice;
-        if (scanf("%d", &userChoice) == EOF) return 0; // reach end of file
-        getchar();
+        int userChoice = readInt();
         checkUserChoice(userChoice, &team);
     }
 }

@@ -51,10 +51,34 @@ void    sortTeamPlayers(TeamPlayers *team, bool nameOrAge)
         }
         team = team->next;
     }
+    printf("\n======================================================\n");
     printf("here is all team players sorted by ");
     if (nameOrAge == SORT_BY_NAME) printf("firstName:\n");
     else printf("age:\n");
     displayTeamPlayers(head);
+}
+
+
+void    displayPosition(TeamPlayers *team, char * postion)
+{
+    printf("List of %ss:\n", postion);
+
+    while (team) 
+    {
+        if (!strcmp(team->player.position, postion))
+            displayPlayerInfo(team->player);
+        team = team->next;
+    }
+}
+
+void    displayPlayersByPosition(TeamPlayers *team) 
+{
+    printf("\n======================================================\n");
+    printf("here is all team players listed by position: \n");
+    displayPosition(team, "goalkeeper");
+    displayPosition(team, "defender");
+    displayPosition(team, "midfielder");
+    displayPosition(team, "striker");
 }
 
 void    displayPlayersInfo(TeamPlayers *team) 
@@ -67,10 +91,8 @@ void    displayPlayersInfo(TeamPlayers *team)
     printf("    1- sorted in alphabetic order of first Names.\n");
     printf("    2- sorted by age(from small to bigger).\n");
     printf("    3- listed by position.\n");
-    int choice;
-    scanf("%d", &choice); getchar();
-
-
+    int choice = readInt();
+    
     switch (choice)
     {
         case 1 :
@@ -80,6 +102,7 @@ void    displayPlayersInfo(TeamPlayers *team)
             sortTeamPlayers(team, SORT_BY_AGE);
             break;
         case 3 :
+            displayPlayersByPosition(team);
             break;
         default :
             printf("Invalid choice.\n");
