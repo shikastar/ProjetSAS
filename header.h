@@ -43,3 +43,6 @@ void    displayPlayersInfo(TeamPlayers *team);
 void    displayTeamPlayers(TeamPlayers *team);
 int     readInt(void);
 void    editPlayerInfo(TeamPlayers *team);
+void    seachForAplayer(TeamPlayers *team);
+Player  *getPlayerWithId(int id, TeamPlayers *team); 
+void    displayPlayerInfo(Player player);

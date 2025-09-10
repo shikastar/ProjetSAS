@@ -24,6 +24,12 @@ void    checkUserChoice(int userChoice, TeamPlayers **team)
         case 3:
             editPlayerInfo(*team);
             break;
+        case 4:
+            // delete
+            break;
+        case 5:
+            seachForAplayer(*team);
+            break;
         default:
             printf("Invalid choice, Please select a choice from the menu.");
     }
