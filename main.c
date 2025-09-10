@@ -30,15 +30,12 @@ int main(int ac, char **av)
 {
     if (ac > 1) freopen(av[1], "r", stdin);
     TeamPlayers *team = NULL;
-   
-    int c = 0;
     while (true)
     {
         displayMenu();
         int userChoice;
         if (scanf("%d", &userChoice) == EOF) return 0; // reach end of file
         getchar();
-        // printf("%d::\n", userChoice);
         checkUserChoice(userChoice, &team);
     }
 }
