@@ -11,27 +11,24 @@ Player *getPlayerWithName(char *name, TeamPlayers *team)
     }
 }
 
-
 void    searchById(TeamPlayers *team) 
 {
+    printf("Enter Id of the player you want to search: ");
     int id = readInt();
     Player *player = getPlayerWithId(id, team);
-    if (player == NULL) {
-        printf("No player with id :%d exist in the team.\n", id);
-        return ;
-    }
-    displayPlayerInfo(*player);
+    if (player == NULL)
+        printf("There is no player with id: %d in the team.\n", id);
+    else displayPlayerInfo(*player);
 }
 
 void    searchByName(TeamPlayers *team)
 {
+    printf("Enter firstName of the player you want to search: ");
     char *name = readLine();
     Player *player = getPlayerWithName(name, team);
-    if (player == NULL) {
-        printf("No player with name :%s exist in the team.\n", name);
-        return ;
-    }
-    displayPlayerInfo(*player);
+    if (player == NULL)
+        printf("There is no player with name: %s in the team.\n", name);
+    else displayPlayerInfo(*player);
 }
 
 void    checkSearchOption(TeamPlayers *team) 
@@ -46,17 +43,17 @@ void    checkSearchOption(TeamPlayers *team)
             searchByName(team);
             break;
         default :
-            printf("invalid search option.\n");
+            printf("Invalid search option.\n");
             break;
     } 
 }
 
 void    printSearchOptions()
 {
-    printf("here is all search options availabe: \n");
+    printf("Here is all search options availabe: \n");
     printf("    1- Search player by it's id.\n");
     printf("    2- Search player by it's firstName.\n");
-    // to add other options.
+    printf("--> option: ");
 }
 
 void    seachForAplayer(TeamPlayers *team)

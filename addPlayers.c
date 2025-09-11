@@ -1,11 +1,8 @@
 #include "header.h"
 
-
-// read Player Data
-
 void    setPlayerId(Player *player)
 {
-    static int id = 0;
+    static int id = 8;
     id++;
 
     player->id = id;

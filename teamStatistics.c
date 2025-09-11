@@ -24,9 +24,9 @@ void    displayPlayersAverageAge(TeamPlayers *team)
         team = team->next;
     }
 
-    float average = 0;
-    if (numberOfPlayers) average = agesSum / numberOfPlayers;
-    printf("Average age of players in the team is : %.2f\n", average);
+    float averageAge = 0;
+    if (numberOfPlayers) averageAge = agesSum / numberOfPlayers;
+    printf("Average age of players in the team is : %.2f\n", averageAge);
 }
 
 void    displayBestScorerPlayer(TeamPlayers *team)
@@ -77,8 +77,7 @@ void    displayPlayersScoringXgoals(TeamPlayers *team)
     while (team)
     {
         if (team->player.goalsScored > X) 
-            printf(" %s %s\n", team->player.firstName, team->player.secondName);
-        
+            printf(" %s %s, goals scored is : %d.\n", team->player.firstName, team->player.secondName, team->player.goalsScored);
         team = team->next;
     }
 }
@@ -111,13 +110,13 @@ void    checkStatisticsOption(TeamPlayers *team)
 
 void    displayStatisticsMenu()
 {
-    printf("Here are the statistics options available.\n");
+    printf("Here are the statistics options available: \n");
     printf("    1- Display number of players in the team.\n");
     printf("    2- Display average age of players in the team.\n");
     printf("    3- Display number of players that score more that X goals.\n");
     printf("    4- Display the best goalScorer in the team.\n");
-    printf("    5- Display the youngest and the oldest player in the team.");
-    printf("please chose an option: ");
+    printf("    5- Display the youngest and the oldest player in the team.\n");
+    printf("---> option: ");
 }
 
 void    displayTeamStatistics(TeamPlayers *team)
