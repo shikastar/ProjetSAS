@@ -3,16 +3,16 @@
 void    displayPlayerInfo(Player player)
 {
     printf("Player Info: \n");
-    printf("    player id: %d.\n", player.id);
-    printf("    player firstName: %s.\n", player.firstName);
-    printf("    player secondName: %s.\n", player.secondName);
-    printf("    player tshistNumber: %d.\n", player.tshirtNumber);
-    printf("    player position: %s.\n", player.position);
-    printf("    player age: %d.\n", player.age);
-    printf("    player goalsScored: %d.\n", player.goalsScored);
-    printf("    player insctiption date: %d, %d, %d.\n",
+    printf("    id: %d.\n", player.id);
+    printf("    firstName: %s.\n", player.firstName);
+    printf("    secondName: %s.\n", player.secondName);
+    printf("    tshistNumber: %d.\n", player.tshirtNumber);
+    printf("    position: %s.\n", player.position);
+    printf("    age: %d.\n", player.age);
+    printf("    goalsScored: %d.\n", player.goalsScored);
+    printf("    insctiption date: %d, %d, %d.\n",
             player.inscriptionDate.day, player.inscriptionDate.month, player.inscriptionDate.year);
-    printf("    player status: %s.\n", player.status);
+    printf("    status: %s.\n", player.status);
 }
 
 void    displayTeamPlayers(TeamPlayers *team)
@@ -91,6 +91,7 @@ void    displayPlayersInfo(TeamPlayers *team)
     printf("    1- sorted in alphabetic order of first Names.\n");
     printf("    2- sorted by age(from small to bigger).\n");
     printf("    3- listed by position.\n");
+    printf("--> option: ");
     int choice = readInt();
     
     switch (choice)

@@ -10,7 +10,7 @@ void    displayMenu()
     printf("    5- Search for a player.\n");
     printf("    6- Display team Statistics.\n");
     printf("==========================================================================\n");
-    printf("Select an option from the menu please: \n");
+    printf("Select an option from the menu please: ");
 }
 
 
@@ -37,7 +37,7 @@ void    checkUserChoice(int userChoice, TeamPlayers **team)
             displayTeamStatistics(*team);
             break ;
         default:
-            printf("Invalid choice, Please select a choice from the menu.");
+            printf("Invalid choice, Please select a choice from the menu.\n");
     }
 }
 
@@ -45,6 +45,8 @@ int main(int ac, char **av)
 {
     if (ac > 1) freopen(av[1], "r", stdin);
     TeamPlayers *team = NULL;
+
+    addTestingPlayers(&team);
     while (true)
     {
         displayMenu();

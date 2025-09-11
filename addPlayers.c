@@ -107,3 +107,19 @@ void    addNewPlayers(TeamPlayers **team)
         addNewPlayer(team, player);
     }
 }
+
+void    addTestingPlayers(TeamPlayers **team)
+{
+    Player arrOfPLayers[] = {
+    {1, "Erling", "Haaland", 9, "striker", 24, 195, {14, 7, 2022}, "starting"},
+    {2, "Kylian", "Mbappe", 7, "striker", 25, 280, {31, 8, 2017}, "starting"},
+    {3, "Kevin", "De Bruyne", 17, "midfielder", 32, 95, {10, 7, 2015}, "starting"},
+    {4, "Virgil", "van Dijk", 4, "defender", 32, 25, {3, 1, 2018}, "starting"},
+    {5, "Alisson", "Becker", 1, "goalkeeper", 30, 0, {19, 7, 2018}, "starting"},
+    {6, "Mason", "Mount", 19, "midfielder", 25, 32, {12, 9, 2021}, "substitute"},
+    {7, "Achraf", "Settar", 23, "goalkeeper", 23, 0, {11, 9, 2025}, "substitute"}
+    };
+
+    for (int i = 0; i < 7; i++)
+        addNewPlayer(team, arrOfPLayers[i]);
+}
