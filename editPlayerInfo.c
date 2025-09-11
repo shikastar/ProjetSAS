@@ -13,17 +13,19 @@ Player  *getPlayerWithId(int id, TeamPlayers *team)
 
 void    changePlayerPosition(Player *player)
 {
-    printf("Enter player new position: ");
-    char *newPosition = readLine();
-    player->position = newPosition;
-    // to add : check if it is valid position
+    do 
+    {
+        printf("Enter player new position: ");
+        player->position = readLine();
+    } while (isInvalidPosition(player->position));
 }
 
 void    changePlayerAge(Player *player)
 {
-    printf("Enter player new age: ");
-    int newAge = readInt();
-    player->age = newAge;
+    do {
+        printf("Enter player new age: ");
+        player->age = readInt();
+    } while (isInvalidAge(player->age));
 }
 
 void    changePlayerScoredGoals(Player *player)

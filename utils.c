@@ -56,6 +56,6 @@ int readInt(void)
 {
     char *line = readLine();
     if (isInvalidInteger(line))
-        printErrorAndExit("Error: Invalid Integer.\n");
-    return atoi(line);
+        return -1;
+    else return atoi(line);
 }

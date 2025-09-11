@@ -5,9 +5,10 @@
 #include <limits.h>
 #include <ctype.h>
 
-#define SORT_BY_AGE  0
-#define SORT_BY_NAME 1
+#define SORT_BY_AGE   0
+#define SORT_BY_NAME  1
 #define MAX_SHIRT_NUM 500
+#define MAX_AGE       60
 
 typedef struct
 {
@@ -50,3 +51,10 @@ void    displayPlayerInfo(Player player);
 void    displayTeamStatistics(TeamPlayers *team);
 void    deletePlayer(TeamPlayers **team);
 void    addTestingPlayers(TeamPlayers **team);
+//error
+bool    isInvalidAge(int age);
+bool    isInvalidShirtNumber(int shirtNumber, TeamPlayers *team);
+bool    shirtNumberAlreadyExist(int shirtNumber, TeamPlayers *team);
+bool    playerAlreadyExist(Player *player, TeamPlayers *team);
+bool    isInvalidDate(Date date);
+bool    isInvalidPosition(char *position);

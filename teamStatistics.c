@@ -72,7 +72,10 @@ void    displayPlayersScoringXgoals(TeamPlayers *team)
 {
     printf("Enter the number X: ");
     int X = readInt();
-
+    if (X == -1) {
+        printf("number %d should be a non negative integer.\n", X);
+        return ;
+    }
     printf("List of players that scored more than %d goals: \n", X);
     while (team)
     {

@@ -8,36 +8,6 @@ void    setPlayerId(Player *player)
     player->id = id;
 }
 
-bool    playerAlreadyExist(Player *player, TeamPlayers *team)
-{
-    bool    alreadyExist = 0;
-    while (team)
-    {
-        if (!strcmp(player->firstName, team->player.firstName)
-        && !strcmp(player->secondName, team->player.secondName)) {
-            alreadyExist = 1;
-            break;
-        }
-        team = team->next;
-    }
-    if (alreadyExist) {
-        printf("    There is already a player with name : %s %s in the team.\n", player->firstName, player->secondName);
-        printf("    Please chose new name for the new player.\n");
-        return 1;
-    }
-    return 0;
-}
-
-bool    isInvalidPosition(char *position)
-{
-    char *possiblePosition[] = {"goalkeeper", "striker", "midfeilder", "defender"}; 
-    for (int i = 0; i < 4; i++) {
-        if (!strcmp(possiblePosition[i], position)) return false;
-    }
-    printf("    Invalid player position please try again.\n");
-    return true;
-}
-
 void    readFirstAnsSecondName(Player *player, TeamPlayers *team) 
 {
     do {
@@ -46,33 +16,6 @@ void    readFirstAnsSecondName(Player *player, TeamPlayers *team)
         printf("    Enter player second name: ");
         player->secondName = readLine();
     } while (playerAlreadyExist(player, team));
-}
-
-bool    shirtNumberAlreadyExist(int shirtNumber, TeamPlayers *team) {
-    while (team) 
-    {
-        if (team->player.tshirtNumber == shirtNumber)
-            return true ;
-        team = team->next;
-    }
-}
-
-bool    isInvalidShirtNumber(int shirtNumber, TeamPlayers *team) {
-    if (shirtNumber < 0 || shirtNumber > MAX_SHIRT_NUM)
-    {
-        printf("Shirt number should be a positive integer less than %d", MAX_SHIRT_NUM);
-        return true;
-    }
-    if (shirtNumberAlreadyExist(shirtNumber, team)) {
-        printf("Shirt number already exist.\n");
-        return true ;
-    }
-    return false;  
-}
-
-bool    isInvalidAge(int age)
-{
-    if 
 }
 
 void    readTshirtNumber(Player *player, TeamPlayers *team)
@@ -105,19 +48,25 @@ void    readAge(Player *player)
 
 void    readGoalsScored(Player *player)
 {
-    printf("    Enter player number of goals scored: ");
-    player->goalsScored = readInt();
+    do {
+        printf("    Enter player number of goals scored: ");
+        player->goalsScored = readInt();
+        if (player->goalsScored < 0)
+            printf ("goals scored should be a non negative integer. please try again.\n");
+    } while (player->goalsScored < 0) ;
 }
 
 void    readInscriptionDate(Player *player)
 {
-    printf("    Enter inscription date:\n");
-    printf("         Enter the year of inscription: ");
-    player->inscriptionDate.year = readInt();
-    printf("         Enter the month of inscription: ");
-    player->inscriptionDate.month = readInt();
-    printf("         Enter the day of inscription: ");
-    player->inscriptionDate.day = readInt();
+    do {
+        printf("    Enter inscription date:\n");
+        printf("         Enter the year of inscription: ");
+        player->inscriptionDate.year = readInt();
+        printf("         Enter the month of inscription: ");
+        player->inscriptionDate.month = readInt();
+        printf("         Enter the day of inscription: ");
+        player->inscriptionDate.day = readInt();
+    } while (isInvalidDate(player->inscriptionDate));
 }
 
 void    readStatus(Player *player)
@@ -161,9 +110,13 @@ void    addNewPlayer(TeamPlayers **team, Player player)
 
 void    addNewPlayers(TeamPlayers **team)
 {
-    printf("Please enter number of new players that you want to add :");
-    int numOfNewPlayers = readInt();
-    if (numOfNewPlayers )
+    int numOfNewPlayers; 
+    do {
+        printf("Please enter number of new players that you want to add :");
+        int numOfNewPlayers = readInt();
+        if (numOfNewPlayers < 0) printf("number of players to add should be a positive integer.\n");
+    } while (numOfNewPlayers < 0);
+    
 
     for (int i = 0; i < numOfNewPlayers; i++)
     {

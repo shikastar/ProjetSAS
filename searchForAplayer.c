@@ -61,4 +61,3 @@ void    seachForAplayer(TeamPlayers *team)
     printSearchOptions();
     checkSearchOption(team);
 }
-
