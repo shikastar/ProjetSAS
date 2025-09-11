@@ -1,14 +1,15 @@
 #include "header.h"
 
 
-Player *getPlayerWithName(char *name, TeamPlayers *team)
+Player *getPlayerWithName(char *firstName, char *secondName, TeamPlayers *team)
 {
     while (team)
     {
-        if (!strcmp(name, team->player.firstName))
+        if (!strcmp(firstName, team->player.firstName) && !strcmp(secondName, team->player.secondName))
             return &team->player;
         team = team->next;
     }
+    return NULL;
 }
 
 void    searchById(TeamPlayers *team) 
@@ -24,10 +25,13 @@ void    searchById(TeamPlayers *team)
 void    searchByName(TeamPlayers *team)
 {
     printf("Enter firstName of the player you want to search: ");
-    char *name = readLine();
-    Player *player = getPlayerWithName(name, team);
+    char *firstName = readLine();
+    printf("Enter secondName of the player you want to search: ");
+    char *secondName = readLine();
+    
+    Player *player = getPlayerWithName(firstName, secondName, team);
     if (player == NULL)
-        printf("There is no player with name: %s in the team.\n", name);
+        printf("There is no player with name: %s %s in the team.\n", firstName, secondName);
     else displayPlayerInfo(*player);
 }
 

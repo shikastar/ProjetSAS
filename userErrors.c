@@ -94,7 +94,7 @@ bool    isInvalidDate(Date date)
 }
 
 bool    isInvalidStatus(char *s) {
-    if (strcmp(s, "subtitute") && strcmp(s, "starting")) {
+    if (strcmp(s, "substitute") && strcmp(s, "starting")) {
         printf("Invalid status. try again please.\n");
         return true;
     }
