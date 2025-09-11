@@ -1,5 +1,5 @@
 SRCS = main.c addPlayers.c displayPlayersInfos.c utils.c editPlayerInfo.c \
-		searchForAplayer.c teamStatistics.c
+		searchForAplayer.c teamStatistics.c   deletePlayer.c             
 	
 OBJS = $(SRCS:.c=.o)
 NAME = projetSAS

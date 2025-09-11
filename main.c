@@ -28,7 +28,7 @@ void    checkUserChoice(int userChoice, TeamPlayers **team)
             editPlayerInfo(*team);
             break;
         case 4:
-            // delete
+            deletePlayer(team);
             break;
         case 5:
             seachForAplayer(*team);

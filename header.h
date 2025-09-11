@@ -47,3 +47,4 @@ void    seachForAplayer(TeamPlayers *team);
 Player  *getPlayerWithId(int id, TeamPlayers *team); 
 void    displayPlayerInfo(Player player);
 void    displayTeamStatistics(TeamPlayers *team);
+void    deletePlayer(TeamPlayers **team);

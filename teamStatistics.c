@@ -1,7 +1,7 @@
 #include "header.h"
 
 
-void    displayNumberOfplayers(TeamPlayers *team)
+void    displayNumberOfPlayers(TeamPlayers *team)
 {
     int numberOfPlayers = 0;
     while (team)
@@ -48,7 +48,7 @@ void    displayBestScorerPlayer(TeamPlayers *team)
         bestScorer.firstName, bestScorer.secondName, bestScorer.goalsScored);
 }
 
-void    displayYoungestandOlderPlayer(TeamPlayers *team)
+void    displayYoungestandOldestPlayer(TeamPlayers *team)
 {
     if (team == NULL) {
         printf("There is no players in the team.\n");
@@ -89,7 +89,7 @@ void    checkStatisticsOption(TeamPlayers *team)
     switch (option)
     {
         case 1:
-            displayNumberOfplayers(team);
+            displayNumberOfPlayers(team);
             break;
         case 2:
             displayPlayersAverageAge(team);
@@ -101,7 +101,7 @@ void    checkStatisticsOption(TeamPlayers *team)
             displayBestScorerPlayer(team);
             break;
         case 5:
-            displayYoungestandOlderPlayer(team); 
+            displayYoungestandOldestPlayer(team); 
             break;
         default:
             printf("Invalid statistics option.\n");
@@ -111,12 +111,13 @@ void    checkStatisticsOption(TeamPlayers *team)
 
 void    displayStatisticsMenu()
 {
-    printf("here is the statistics options available.\n");
+    printf("Here are the statistics options available.\n");
     printf("    1- Display number of players in the team.\n");
     printf("    2- Display average age of players in the team.\n");
     printf("    3- Display number of players that score more that X goals.\n");
     printf("    4- Display the best goalScorer in the team.\n");
     printf("    5- Display the youngest and the oldest player in the team.");
+    printf("please chose an option: ");
 }
 
 void    displayTeamStatistics(TeamPlayers *team)
