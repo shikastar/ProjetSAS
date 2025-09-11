@@ -7,15 +7,16 @@
 
 #define SORT_BY_AGE  0
 #define SORT_BY_NAME 1
+#define MAX_SHIRT_NUM 500
 
-typedef struct Date
+typedef struct
 {
     int     day;
     int     month;
     int     year;
 }           Date; 
 
-typedef struct Player
+typedef struct 
 {
     int     id;
     char    *firstName;
@@ -29,11 +30,11 @@ typedef struct Player
 }           Player;
 
 
-typedef struct TeamPlayers 
+typedef struct          TeamPlayers 
 {
-    Player player;
+    Player              player;
     struct TeamPlayers *next;
-}               TeamPlayers;
+}                       TeamPlayers;
 
 
 void    addNewPlayers(TeamPlayers **team);

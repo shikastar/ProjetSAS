@@ -2,11 +2,28 @@
 
 void    printErrorAndExit(const char *error)
 {
-    perror(error);
+    fputs(error, stderr);
     exit(EXIT_FAILURE);
 }
 
-// to read a full line including spaces
+bool    isWhiteSpace(char c) {
+    return (c == ' ' || c == '\t' || c == '\n' || c == '\v');
+}
+
+char    *trimWhiteSpaces(char *s)
+{
+    while (s && isWhiteSpace(*s)) {
+        if (*s != ' ' && *s != '\t') break;
+        s++;
+    }
+    char *end = s + strlen(s) - 1;
+    while (end > s && isWhiteSpace(*end)) {
+        *end = '\0';
+        end--;
+    }
+    return s;
+}
+
 char    *readLine(void)
 {
     size_t len = 0;
@@ -17,7 +34,7 @@ char    *readLine(void)
         printf("reach end of file.\n");
         exit(EXIT_SUCCESS);
     }
-    if (line[strlen(line) -1] == '\n') line[strlen(line) - 1] = '\0';
+    line = trimWhiteSpaces(line);
     return line;
 }
 
@@ -39,6 +56,6 @@ int readInt(void)
 {
     char *line = readLine();
     if (isInvalidInteger(line))
-        printErrorAndExit("Invalid Integer.\n");
+        printErrorAndExit("Error: Invalid Integer.\n");
     return atoi(line);
 }
