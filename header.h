@@ -51,10 +51,12 @@ void    displayPlayerInfo(Player player);
 void    displayTeamStatistics(TeamPlayers *team);
 void    deletePlayer(TeamPlayers **team);
 void    addTestingPlayers(TeamPlayers **team);
-//error
+//errors
 bool    isInvalidAge(int age);
 bool    isInvalidShirtNumber(int shirtNumber, TeamPlayers *team);
 bool    shirtNumberAlreadyExist(int shirtNumber, TeamPlayers *team);
 bool    playerAlreadyExist(Player *player, TeamPlayers *team);
 bool    isInvalidDate(Date date);
 bool    isInvalidPosition(char *position);
+bool    isInvalidStatus(char *s);
+bool    isInvalidName(Player *player, TeamPlayers *team); 

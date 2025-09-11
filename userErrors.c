@@ -20,6 +20,25 @@ bool    playerAlreadyExist(Player *player, TeamPlayers *team)
     return false;
 }
 
+bool    isAllAlphabets(char *s) 
+{
+    while (*s) {
+        if (!isalpha(*s)) {
+            printf("Invalid name, name should contain just alphabet characters.\n");
+            return false;
+        }
+        s++;
+    }
+    return true;
+}
+
+bool    isInvalidName(Player *player, TeamPlayers *team) 
+{
+    if (playerAlreadyExist(player, team)) return true;
+    if (!isAllAlphabets(player->firstName) || !isAllAlphabets(player->secondName)) return true;
+    return false;
+}
+
 bool    isInvalidPosition(char *position)
 {
     char *possiblePosition[] = {"goalkeeper", "striker", "midfeilder", "defender"}; 
@@ -43,11 +62,11 @@ bool    shirtNumberAlreadyExist(int shirtNumber, TeamPlayers *team) {
 bool    isInvalidShirtNumber(int shirtNumber, TeamPlayers *team) {
     if (shirtNumber < 0 || shirtNumber > MAX_SHIRT_NUM)
     {
-        printf("Shirt number should be a positive integer less than %d.\n", MAX_SHIRT_NUM);
+        printf("Shirt number should be a positive integer less than %d, try again pleae.\n", MAX_SHIRT_NUM);
         return true;
     }
     if (shirtNumberAlreadyExist(shirtNumber, team)) {
-        printf("Shirt number already exist.\n");
+        printf("Shirt number already exist. try again please.\n");
         return true ;
     }
     return false;
@@ -64,12 +83,20 @@ bool    isInvalidAge(int age)
 
 bool    isInvalidDate(Date date)
 {
-    bool isInvalid = (date.day < 0 || date.month < 0 || date.year < 0
+    bool isInvalid = (date.day <= 0 || date.month <= 0 || date.year <= 0
         || date.day > 31 || date.month > 12  || date.year > 2025);
 
     if (isInvalid) {
         printf("Invalid date. please try again.\n");
         return true ;
+    }
+    return false;
+}
+
+bool    isInvalidStatus(char *s) {
+    if (strcmp(s, "subtitute") && strcmp(s, "starting")) {
+        printf("Invalid status. try again please.\n");
+        return true;
     }
     return false;
 }

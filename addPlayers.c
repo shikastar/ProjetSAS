@@ -15,7 +15,7 @@ void    readFirstAnsSecondName(Player *player, TeamPlayers *team)
         player->firstName = readLine();
         printf("    Enter player second name: ");
         player->secondName = readLine();
-    } while (playerAlreadyExist(player, team));
+    } while (isInvalidName(player, team));
 }
 
 void    readTshirtNumber(Player *player, TeamPlayers *team)
@@ -29,11 +29,12 @@ void    readTshirtNumber(Player *player, TeamPlayers *team)
 void    readPosition(Player *player)
 {
     do {
-        printf("    Enter player position: ");
+        printf("    Enter player position: \n");
         printf("     -goalkeeper\n");
         printf("     -defender\n");
         printf("     -midfielder\n");
         printf("     -striker\n");
+        printf("--> choice: ");
         player->position = readLine();
     } while (isInvalidPosition(player->position));
 }
@@ -71,8 +72,14 @@ void    readInscriptionDate(Player *player)
 
 void    readStatus(Player *player)
 {
-    printf("    Enter player status: ");
-    player->status = readLine();
+    do 
+    {
+        printf("    Enter player status: \n");
+        printf("     -starting\n");
+        printf("     -substitute\n");
+        printf("       --> choice: ");
+        player->status = readLine();
+    } while (isInvalidStatus(player->status));
 }
 
 Player  createNewPlayer(TeamPlayers *team)
@@ -113,9 +120,9 @@ void    addNewPlayers(TeamPlayers **team)
     int numOfNewPlayers; 
     do {
         printf("Please enter number of new players that you want to add :");
-        int numOfNewPlayers = readInt();
-        if (numOfNewPlayers < 0) printf("number of players to add should be a positive integer.\n");
-    } while (numOfNewPlayers < 0);
+        numOfNewPlayers = readInt();
+        if (numOfNewPlayers <= 0) printf("number of players to add should be a positive integer, try again please.\n");
+    } while (numOfNewPlayers <= 0);
     
 
     for (int i = 0; i < numOfNewPlayers; i++)
