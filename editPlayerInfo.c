@@ -1,6 +1,5 @@
 #include "header.h"
 
-
 Player  *getPlayerWithId(int id, TeamPlayers *team) 
 {
     while (team)
@@ -18,6 +17,7 @@ void    changePlayerPosition(Player *player)
         printf("Enter player new position: ");
         player->position = readLine();
     } while (isInvalidPosition(player->position));
+    printf("player position succesfully changed.\n");
 }
 
 void    changePlayerAge(Player *player)
@@ -26,13 +26,22 @@ void    changePlayerAge(Player *player)
         printf("Enter player new age: ");
         player->age = readInt();
     } while (isInvalidAge(player->age));
+    printf("player age have succesfully changed.\n");
 }
 
 void    changePlayerScoredGoals(Player *player)
 {
-    printf("Enter player new number of scored goals: ");
-    int newGoalsScored = readInt();
-    player->goalsScored = newGoalsScored;
+    do
+    {
+        printf("Enter player new number of scored goals: ");
+        player->goalsScored = readInt();
+        if (player->goalsScored < 0)
+            printf ("goals scored should be a non negative integer. please try again.\n");
+        else if (player->goalsScored > 10) 
+            printf("player %s %s is a team star, he scored %d goals.\n", player->firstName,
+            player->secondName, player->goalsScored);
+    } while (player->goalsScored < 0);
+    printf("player goal scored have succesfully changed.\n");
 }
 
 void    checkEditOption(int option, Player *player)
@@ -48,6 +57,8 @@ void    checkEditOption(int option, Player *player)
         case 3:
             changePlayerScoredGoals(player);
             break;
+        case 4 :
+            break ;
         default :
             printf("Invalid edit player option.\n");
     }
@@ -59,6 +70,7 @@ void    printEditOptions()
     printf("    1- change player position.\n");
     printf("    2- change player age.\n");
     printf("    3- change player number of goals scored.\n");
+    printf("    4- Exit.\n");
     printf("--> option: ");
 }
 
