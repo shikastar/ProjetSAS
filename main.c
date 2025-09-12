@@ -9,6 +9,7 @@ void    displayMenu()
     printf("    4- Delete a player.\n");
     printf("    5- Search for a player.\n");
     printf("    6- Display team Statistics.\n");
+    printf("    7- Exit.\n");
     printf("==========================================================================\n");
     printf("Select an option from the menu please: ");
 }
@@ -36,6 +37,8 @@ void    checkUserChoice(int userChoice, TeamPlayers **team)
         case 6:
             displayTeamStatistics(*team);
             break ;
+        case 7:
+            exit(EXIT_SUCCESS);
         default:
             printf("Invalid choice, Please select a choice from the menu.\n");
     }
@@ -43,7 +46,10 @@ void    checkUserChoice(int userChoice, TeamPlayers **team)
 
 int main(int ac, char **av) 
 {
-    if (ac > 1) freopen(av[1], "r", stdin);
+    if (ac > 1) {
+        if (!freopen(av[1], "r", stdin) || !freopen("output.txt", "w", stdout))
+            printErrorAndExit("Failed opening file\n");
+    }
     TeamPlayers *team = NULL;
 
     addTestingPlayers(&team);
